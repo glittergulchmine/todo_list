@@ -7,10 +7,13 @@ The Todo List application is a straightforward program written in C. It's design
 Folder structure:
 .git
 -backend
-app.c
-file1
-file2
-file3
+add_task.c // for adding task
+app.c // runs the main application
+delete_task.c // for deleting task
+error.c // for handling all the errors
+structure.h // for the frame of the todo list
+update_task.c // for updating task
+
 ....
 
 //Important information
