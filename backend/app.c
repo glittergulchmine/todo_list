@@ -1,15 +1,16 @@
-#include<stdio.h>
-#include "structure.h"  // header for  when using the stucture and linked list
+#include <stdio.h>
+#include <stdlib.h>
+#include "structure.h"
+#include "add_task.h"
 
-// Define a structure named MyTask to represent a task in a ToDoList.
-// This structure includes the date, time, and task description.
+int main(int argc, char *argv[]) {
+    Node* head = NULL;  // Initialize the linked list head to NULL
 
+    printf("Welcome to the ToDo List Application!\n");
+    getUserInput(&head);  // Handle user input for adding tasks
 
-int main() {
-    // The main function of the program. Execution starts here.
+    // Optional: Additional code to manipulate or display task
+    printf("Exiting the application. Goodbye!\n");
 
-    // (Here, you would typically include code to create instances of MyTask,
-    // manipulate them, or perform other operations related to your ToDoList application.)
-
-    return 0; // Indicates that the program finished successfully.
+    return 0;  // Exit status of the program
 }

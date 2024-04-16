@@ -1,19 +1,23 @@
 // structure.h
 
-#ifndef STRUCTURE_H // Check if STRUCTURE_H is not defined
-#define STRUCTURE_H // Define STRUCTURE_H
+#ifndef STRUCTURE_H
+#define STRUCTURE_H
 
-// Structure to hold task information
 typedef struct {
-    char date[24];  // Date of the task in formatted string
-    char time[24];  // Time of the task in formatted string
+    char date[24];  // Date of the task ("YYYY-MM-DD")
+    char time[24];  // Time of the task ("HH:MM")
     char task[256]; // Task description
 } MyTask;
 
-// Node structure for a linked list of tasks
 typedef struct Node {
     MyTask taskData;   // Task data
-    struct Node* next; // Pointer to next node
+    struct Node* next; // Pointer to the next node
 } Node;
+
+// Function declarations
+Node* createNode(const char* date, const char* time, const char* taskDescription);
+void addTask(Node** head, const char* date, const char* time, const char* taskDescription);
+void printTasks(const Node* head);
+void freeList(Node** head);
 
 #endif // STRUCTURE_H
