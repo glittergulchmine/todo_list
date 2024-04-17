@@ -1,10 +1,9 @@
-
 #include "stdio.h"
 #include "stdlib.h"
 #include "structure.h"
 
 //Function to print all tasks in link list
-void printTasks(struct Node* head, char *date, char *time, char *taskTitle, char *taskDescription)
+void printNodes(struct Node* head, char date[], char time[], char taskTitle[], char taskDescription[])
 {
     int counter = 1;
     struct Node* current = head;
@@ -24,13 +23,13 @@ void printTasks(struct Node* head, char *date, char *time, char *taskTitle, char
 }
 
 //Main function to update task
-void update_task(struct Node* head, char *date, char *time, char *taskTitle, char *taskDescription)
+void update_task(struct Node* head, char date[], char time[], char taskTitle[], char taskDescription[])
 {
     int choice = 0, updateDate = 0, updateTime = 0, updateTitle = 0, updateDescription = 0;
     struct Node* current = head;
 
     //Asks user for which node they desire to update
-    printTasks(head, date, time, taskTitle, taskDescription);
+    printNodes(head, date, time, taskTitle, taskDescription);
     printf("Please enter the corresponding number for the task you would like to update: ");
     scanf("%d", &choice);
 
