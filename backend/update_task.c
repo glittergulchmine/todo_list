@@ -3,7 +3,7 @@
 #include "structure.h"
 
 //Function to print all tasks in link list
-void printNodes(struct Node* head, char date[], char time[], char taskTitle[], char taskDescription[])
+int printNodes(struct Node* head, char date[], char time[], char taskTitle[], char taskDescription[])
 {
     int counter = 1;
     struct Node* current = head;
@@ -20,18 +20,26 @@ void printNodes(struct Node* head, char date[], char time[], char taskTitle[], c
         current = current->next;
         counter++;
     }
+    return counter;
 }
 
 //Main function to update task
 void update_task(struct Node* head, char date[], char time[], char taskTitle[], char taskDescription[])
 {
-    int choice = 0, updateDate = 0, updateTime = 0, updateTitle = 0, updateDescription = 0;
+    int choice = 0, updateDate = 0, updateTime = 0, updateTitle = 0, updateDescription = 0, maxNodes;
     struct Node* current = head;
 
     //Asks user for which node they desire to update
-    printNodes(head, date, time, taskTitle, taskDescription);
+    maxNodes = printNodes(head, date, time, taskTitle, taskDescription);
     printf("Please enter the corresponding number for the task you would like to update: ");
     scanf("%d", &choice);
+
+    //Make sure user enters an actual node
+    while((choice > maxNodes) || (choice < 0))
+    {
+        printf("That was not an option, please enter one of the listed numbers (0-%d): ", maxNodes);
+        scanf("%d", &choice);
+    }
 
     //Navigates to the desired node
     for(int i = 1; i < choice; i++)
@@ -40,10 +48,10 @@ void update_task(struct Node* head, char date[], char time[], char taskTitle[], 
     }
 
     //Prints the information of the selected task
-    printf("Date: %s\nTime: %s\nTitle: ", current->date, current->time);
-    puts(current->taskTitle);
+    printf("Date: %s\nTime: %s\nTitle: ", current->taskData.date, current->taskData.time);
+    puts(current->taskData.taskTitle);
     printf("\nDescription: ");
-    puts(current->taskDescription);
+    puts(current->taskData.taskDescription);
 
     //Asks if the user wants to update the date
     printf("\n\nDo you want to update the date? (enter 1 for yes or 2 for no)\n");
@@ -51,7 +59,7 @@ void update_task(struct Node* head, char date[], char time[], char taskTitle[], 
     if(updateDate == 1)
     {
         printf("\nPlease enter the new date: ");
-        scanf("%s", current->date);
+        scanf("%s", current->taskData.date);
     }
 
     //Asks if the user wants to update the time
@@ -60,7 +68,7 @@ void update_task(struct Node* head, char date[], char time[], char taskTitle[], 
     if(updateDate == 1)
     {
         printf("\nPlease enter the new time: ");
-        scanf("%s", current->time);
+        scanf("%s", current->taskData.time);
     }
 
     //Asks if the user wants to update the title
@@ -69,7 +77,7 @@ void update_task(struct Node* head, char date[], char time[], char taskTitle[], 
     if(updateDate == 1)
     {
         printf("\nPlease enter the new title: ");
-        scanf("%s", current->taskTitle);
+        scanf("%s", current->taskData.taskTitle);
     }
 
     //Asks if the user wants to update the description
@@ -78,7 +86,7 @@ void update_task(struct Node* head, char date[], char time[], char taskTitle[], 
     if(updateDate == 1)
     {
         printf("\nPlease enter the new description: ");
-        scanf("%s", current->taskDescription);
+        scanf("%s", current->taskData.taskDescription);
     }
 }
 
