@@ -5,12 +5,14 @@
 //Function to print all tasks in link list
 int printNodes(struct Node* head, char date[], char time[], char taskTitle[], char taskDescription[])
 {
-    int counter = 1;
+    int counter = 0;
     struct Node* current = head;
 
     //Loop to print each node in link list
     while(current != NULL)
     {
+        counter++;
+        
         printf("%d: %s, %s\n", counter, date, time);    //Prints the number of the node, date and time
         puts(taskTitle);    //Prints the title of the task
         printf("\n");
@@ -18,7 +20,6 @@ int printNodes(struct Node* head, char date[], char time[], char taskTitle[], ch
         printf("\n\n");
 
         current = current->next;
-        counter++;
     }
     return counter;
 }
