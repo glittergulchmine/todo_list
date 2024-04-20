@@ -1,23 +1,25 @@
-// structure.h
-
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 
 typedef struct {
-    char date[24];  // Date of the task ("YYYY-MM-DD")
-    char time[24];  // Time of the task ("HH:MM")
-    char task[256]; // Task description
+    int charId;
+    char date[24];
+    char time[24];
+    char task[256];
 } MyTask;
 
 typedef struct Node {
-    MyTask taskData;   // Task data
-    struct Node* next; // Pointer to the next node
+    MyTask taskData;
+    struct Node* next;
 } Node;
 
 // Function declarations
-Node* createNode(const char* date, const char* time, const char* taskDescription);
+Node* createNode(int charId, const char* date, const char* time, const char* taskDescription);
 void addTask(Node** head, const char* date, const char* time, const char* taskDescription);
-void printTasks(const Node* head);
-void freeList(Node** head);
+void read_tasks(Node* head);
+void delete_task(Node** head);
+int isValidDate(const char* date);
+int isValidTime(const char* time);
+
 
 #endif // STRUCTURE_H

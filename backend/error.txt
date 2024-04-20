@@ -1,0 +1,54 @@
+todo list app
+user should be able to add task, update task, delete task and list task
+create app.c file(main) file with following things:
+give options to user if he/she want to add task, update task, delete task, list task
+if user wants to add task:
+   
+
+create a function called get_user_input:
+ask user to enter a date in a format:
+check if the format is valid
+ask user to enter a time in a format:
+check if the format is valid
+ask user to input the task title
+check if the title is empty
+ask user to enter a task description
+check if the description is empty
+
+if date&time&title&taskdescription
+    call linked_list_traversal function
+else:
+return or print error
+
+linked_list_traversal function(){
+
+    create variable called head=Null of linked list
+    check user.txt file:
+        if user.txt file exist:
+            look the first line if it contains some address
+            if address:
+                head=address
+            else:
+                the linked list is empty 
+                
+
+        else:
+            create user.txt file
+        
+        if head:
+            start=head
+            while(start->next!=null): // reaching to the end of the linked list
+                start=start->next
+            
+            now the end of the linked list is reached
+            create a new node calling our node create function
+            and inserrt the data in our node
+
+
+        else:
+        
+}
+
+        
+
+
