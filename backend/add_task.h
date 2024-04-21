@@ -4,11 +4,9 @@
 #include <string.h>
 #include "structure.h"
 #include "ctype.h"
-#include "isValid.h"
 
 
-
-Node* createNode(int charId, const char* date, const char* time, const char* taskDescription) {
+Node* createNode(int charId, const char* date, const char* time, const char* task) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
         fprintf(stderr, "Error allocating memory\n");
@@ -20,23 +18,26 @@ Node* createNode(int charId, const char* date, const char* time, const char* tas
     newNode->taskData.date[23] = '\0';
     strncpy(newNode->taskData.time, time, 23);
     newNode->taskData.time[23] = '\0';
-    strncpy(newNode->taskData.task, taskDescription, 255);
+    strncpy(newNode->taskData.task, task, 255);
     newNode->taskData.task[255] = '\0';
     newNode->next = NULL;
 
     return newNode;
 }
 
-void addTask(Node** head, const char* date, const char* time, const char* taskDescription) {
+void addTask(Node** head, const char* date, const char* time, const char* task) {
     int charId = 0;
     Node* current = *head;
+
     if (current != NULL) {
+        charId += 1;
         while (current->next != NULL) {
             current = current->next;
+            charId++;
         }
-        charId = current->taskData.charId + 1;
     }
-    Node* newNode = createNode(charId, date, time,taskDescription);
+
+    Node* newNode = createNode(charId, date, time,task);
     if (newNode == NULL) {
         return; // Return early if failed to create a new node
     }
@@ -45,13 +46,8 @@ void addTask(Node** head, const char* date, const char* time, const char* taskDe
     *head = newNode;
 }
 
-
-
-
 void getUserInput(Node** head) {
     int choice;
-    printf("Hello, welcome to your personal TODO list app\n");
-    printf("\nWhat can I help you with today?\n");
 
     do {
         printf("To add tasks to your app, press 0.\nTo exit, press 1: ");
@@ -68,7 +64,7 @@ void getUserInput(Node** head) {
             scanf("%s", time); // Read time
             getchar(); // Consume the newline
 
-            printf("Enter the task description: ");
+            printf("Enter the task: ");
             fgets(task, sizeof(task), stdin);
             task[strcspn(task, "\n")] = 0; // Remove newline character
 
