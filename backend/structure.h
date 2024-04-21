@@ -6,6 +6,7 @@ typedef struct {
     char date[24];
     char time[24];
     char task[256];
+    char description[256];
 } MyTask;
 
 typedef struct Node {
@@ -18,8 +19,5 @@ Node* createNode(int charId, const char* date, const char* time, const char* tas
 void addTask(Node** head, const char* date, const char* time, const char* taskDescription);
 void read_tasks(Node* head);
 void delete_task(Node** head);
-int isValidDate(const char* date);
-int isValidTime(const char* time);
-
 
 #endif // STRUCTURE_H
