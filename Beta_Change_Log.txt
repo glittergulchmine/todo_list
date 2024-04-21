@@ -1,0 +1,32 @@
+In app.c, under case 2: added break
+
+In app.c, under case 3: added break
+
+Added comments in app.c to explain each function
+
+In app.c, in the do-while loop: updated exit clause to 'choice != 4' to reflect the switch
+
+In app.c: updated initial print statements to reflect the logic
+
+In app.c: added missing #include "update_task.h"
+
+In app.c, under case 1: fixed function name to match the called function name
+
+In app.c, what are the 'argc' and 'argv' parameters being used for?
+
+In add_task.h, removed extra whitespace
+
+In isValid.h, error of both functions being defined somewhere else
+ - Both were defined in structure.h, removing both did not solve error
+ - isValid header had multiple instances in which it was called, deleting them and calling them in app.c fixed the error.
+
+In update_task.h, head was being passed as a pointer to the head node (double pointer) but function definition asked for the head of the link list (single pointer).
+Updated function definition to match other similar functions
+
+In update_task.h, current was assigned 'head' when it needed to be assigned '*head'
+
+In read_task.h, all nodes after the first are given the id of '1'.
+
+In read_task.h, reformatted print statements so it is easier to read for the user
+
+In add_task.h, under addTask function, charId is meant to increment but is not doing so. Put charId into loop to increment
