@@ -5,7 +5,6 @@
 #include "structure.h"
 #include "ctype.h"
 
-
 Node* createNode(int charId, const char* date, const char* time, const char* task) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
@@ -27,13 +26,24 @@ Node* createNode(int charId, const char* date, const char* time, const char* tas
 
 void addTask(Node** head, const char* date, const char* time, const char* task) {
     int charId = 0;
+    //int *ptr = &charId;
     Node* current = *head;
+    Node* temp = *head;
 
     if (current != NULL) {
-        charId += 1;
-        while (current->next != NULL) {
-            current = current->next;
+
+        while (temp != NULL){
+
+            if(charId != temp->taskData.charId)
+            {
+                break;
+            }
             charId++;
+            temp = temp->next;
+        }
+
+        while (current->next != NULL){
+            current = current->next;
         }
     }
 
@@ -41,19 +51,24 @@ void addTask(Node** head, const char* date, const char* time, const char* task) 
     if (newNode == NULL) {
         return; // Return early if failed to create a new node
     }
-
-    newNode->next = *head; // Insert at the head for simplicity
-    *head = newNode;
+    if(current == NULL){ // Insert at the head
+        newNode->next = *head;
+        *head = newNode;
+    }
+    else{ //Insert at end
+        newNode->next = NULL;
+        current->next = newNode;
+    }
 }
 
 void getUserInput(Node** head) {
     int choice;
 
     do {
-        printf("To add tasks to your app, press 0.\nTo exit, press 1: ");
+        printf("To add a task to your list, press 1.\nTo return to the menu, press 0: ");
         scanf("%d", &choice); // Read user input
 
-        if (choice == 0) {
+        if (choice == 1) {
             char date[25], time[25], task[256];
 
             printf("Enter the date (YYYY-MM-DD): ");
@@ -73,8 +88,7 @@ void getUserInput(Node** head) {
             } else {
                 printf("Invalid input. Please ensure the date, time, and task description are correct.\n");
             }
-        } else if (choice == 1) {
-            printf("Goodbye!\n");
+        } else if (choice == 0) {
             break; // Exit the loop and function
         } else {
             printf("Invalid choice, please try again.\n");

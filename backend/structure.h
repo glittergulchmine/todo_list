@@ -6,7 +6,6 @@ typedef struct {
     char date[24];
     char time[24];
     char task[256];
-    char description[256];
 } MyTask;
 
 typedef struct Node {

@@ -9,7 +9,7 @@ void delete_task(Node **head) {
 
     // First, display the tasks to the user
     printf("Below are your tasks:\n");
-    read_tasks(*head);  // Assuming read_tasks takes Node* and not Node**
+    read_tasks(*head);
 
     // Get the task number to delete
     printf("\nEnter a task number to delete: ");

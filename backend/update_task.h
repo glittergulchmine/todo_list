@@ -4,8 +4,12 @@
 
 void update_task(Node **head) {
     int charId;
+
+    // First, display the tasks to the user
+    printf("Below are your tasks:\n");
+    read_tasks(*head);
     
-    printf("Enter task charID to update: ");
+    printf("Enter the task number to update: ");
     scanf("%d", &charId);  // Get the charID from user input
 
     Node* current = *head;
@@ -13,14 +17,13 @@ void update_task(Node **head) {
         current = current->next;  // Traverse the list to find the task
     }
     if (current == NULL) {
-        printf("Task with charID %d not found.\n", charId);
+        printf("Task with number %d not found.\n", charId);
         return;  // If no task is found, exit the function
     }
     // If the task is found, prompt the user for new details
     printf("Updating Task ID %d\n", charId);
     printf("Enter new date (YYYY-MM-DD): ");
     scanf("%s", current->taskData.date);  // Update the date
-
     printf("Enter new time (HH:MM): ");
     scanf("%s", current->taskData.time);  // Update the time
     printf("Enter new task description: ");
