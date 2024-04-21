@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "structure.h"
-#include "isValid.h"  // Make sure this file contains validation functions you might need.
 
-void update_task(Node *head) {
+void update_task(Node **head) {
     int charId;
     
     printf("Enter task charID to update: ");
     scanf("%d", &charId);  // Get the charID from user input
 
-    Node* current = head;
+    Node* current = *head;
     while (current != NULL && current->taskData.charId != charId) {
         current = current->next;  // Traverse the list to find the task
     }
