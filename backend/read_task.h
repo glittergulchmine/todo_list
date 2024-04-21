@@ -9,11 +9,12 @@ void read_tasks(Node* head) {
     // Traverse the linked list
     while (temp != NULL) {
         // Print the date, time, and task description for each task
-        printf("Task number: %d, Date: %s, Time: %s, Task: %s\n", 
-               temp->taskData.charId ,
+        printf("\nTask number: %d\nDate: %s, Time: %s\nTask: %s\n", 
+               temp->taskData.charId,
                temp->taskData.date, 
                temp->taskData.time, 
                temp->taskData.task);
+
         temp = temp->next; // Move to the next node
     }
 }
