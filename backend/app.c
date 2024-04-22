@@ -12,19 +12,21 @@ int main(int argc, char *argv[]) {
     Node* head = NULL;  // Start with an empty list
     char choice;
 
+    printf("\n***************************************\n\n");
+
     printf("Welcome to the ToDo List Application!\n");
 
     do {
-        printf("\n\n******************************\n\n");
-        printf("Select an option:\n");
-        printf("0 - Add Task\n");
-        printf("1 - Update Task\n");
-        printf("2 - List Tasks \n");
-        printf("3 - Delete Task\n");
-        printf("4 - Exit\n");
-        printf("Enter your choice: ");
+        printf("\n\n***************************************\n\n");
+        printf("\tSelect an option:\n");
+        printf("\t0 - Add Task\n");
+        printf("\t1 - Update Task\n");
+        printf("\t2 - List Tasks \n");
+        printf("\t3 - Delete Task\n");
+        printf("\t4 - Exit\n");
+        printf("\tEnter your choice: ");
         scanf(" %c", &choice);
-        printf("\n\n******************************\n\n");
+        printf("\n\n***************************************\n\n");
 
         switch (choice) {
             case '0':
