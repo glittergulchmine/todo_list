@@ -37,7 +37,7 @@ void delete_task(Node **head) {
     // Free the memory allocated for the deleted node
     free(temp);
     
-    printf("Task with ID %d has been deleted.\n", charId);
+    printf("\nTask with ID %d has been deleted.\n", charId);
     read_tasks(*head);
 }
 
